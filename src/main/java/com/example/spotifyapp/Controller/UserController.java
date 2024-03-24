@@ -30,13 +30,14 @@ public class UserController {
 
     @Autowired
     private User user;
-
+ //create a metohod for  save USer
     @PostMapping("/register")
     public ResponseEntity<User> saveUser(@RequestBody User user) throws UserAlreadyExistException {
         User savedUser = userService.saveUser(user);
         return new ResponseEntity<User>(savedUser, HttpStatus.CREATED);
     }
 
+    //create a method for validate user with emailId and password and post mapping as login
     @PostMapping("/login")
     public ResponseEntity<?> validateUser(@RequestBody User user) {
         User user1 = userService.validateUser(user.getEmailId(), user.getPassword());
